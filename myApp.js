@@ -55,8 +55,8 @@ db.once("open", function () {
 
 // <Your code here >
 
-const Person = new Schema({
-  name: String,
+const personSchema = new Schema({
+  name: { type: String, required: true },
   age: Number,
   favoriteFood: [String],
   title: String, // String is shorthand for {type: String}
@@ -70,6 +70,8 @@ const Person = new Schema({
     favs: Number,
   },
 });
+
+const Person = mongoose.model("Person", personSchema);
 
 // **Note**: Glitch is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
