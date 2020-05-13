@@ -58,7 +58,7 @@ db.once("open", function () {
 const personSchema = new Schema({
   name: { type: String, required: true },
   age: Number,
-  favoriteFood: [String],
+  favoriteFoods: [String],
   title: String, // String is shorthand for {type: String}
   author: String,
   body: String,
