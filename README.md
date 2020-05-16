@@ -56,3 +56,9 @@ person.save(function (err, data) {
 Sometimes you need to create many instances of your models, e.g. when seeding a database with initial data. `Model.create()` takes an array of objects like `[{name: 'John', ...}, {...}, ...]` as the first argument, and saves them all in the db.
 
 Create many people with `Model.create()`, using the function argument `arrayOfPeople`.
+
+## 5. Use model.find() to Search Your Database
+
+Find all the people having a given name, using `Model.find() -> [Person]`
+
+In its simplest usage, `Model.find()` accepts a query document (a JSON object) as the first argument, then a callback. It returns an array of matches. It supports an extremely wide range of search options. Check it in the docs. Use the function argument `personName` as search key.
