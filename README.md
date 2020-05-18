@@ -68,3 +68,11 @@ In its simplest usage, `Model.find()` accepts a query document (a JSON object) a
 `Model.findOne()` behaves like `.find()`, but it returns only one document (not an array), even if there are multiple items. It is especially useful when searching by properties that you have declared as unique.
 
 Find just one person which has a certain food in the person's favorites, using `Model.findOne() -> Person`. Use the function argument food as search key.
+
+## 7. Use model.findById() to Search Your Database By \_id
+
+When saving a document, mongodb automatically adds the field `_id`, and set it to a unique alphanumeric key. Searching by `_id` is an extremely frequent operation, so mongoose provides a dedicated method for it.
+
+Find the (only!!) person having a given `_id`, using `Model.findById() -> Person`. Use the function argument `personId` as the search key.
+
+## 8.
