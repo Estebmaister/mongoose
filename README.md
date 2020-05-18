@@ -62,3 +62,9 @@ Create many people with `Model.create()`, using the function argument `arrayOfPe
 Find all the people having a given name, using `Model.find() -> [Person]`
 
 In its simplest usage, `Model.find()` accepts a query document (a JSON object) as the first argument, then a callback. It returns an array of matches. It supports an extremely wide range of search options. Check it in the docs. Use the function argument `personName` as search key.
+
+## 6. Use model.findOne() to Return a Single Matching Document from Your Database
+
+`Model.findOne()` behaves like `.find()`, but it returns only one document (not an array), even if there are multiple items. It is especially useful when searching by properties that you have declared as unique.
+
+Find just one person which has a certain food in the person's favorites, using `Model.findOne() -> Person`. Use the function argument food as search key.
