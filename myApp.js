@@ -220,11 +220,16 @@ const findPersonById = function (personId, done) {
 
 const findEditThenSave = function (personId, done) {
   const foodToAdd = "hamburger";
+
   Person.findById(personId, function (err, data) {
-    data.favoriteFoods.push(foodToAdd);
-    Person.save();
     if (err) return console.log(err);
-    done(null, data);
+
+    data.favoriteFoods.push(foodToAdd);
+    data.save((err, dataNext) => {
+      if (err) return console.error("error saving data: ", err.message);
+
+      done(null, dataNext);
+    });
   });
 };
 
