@@ -83,4 +83,12 @@ Find a person by `\_id` ( use any of the above methods ) with the parameter `per
 
 Note: This may be tricky, if in your Schema, you declared `favoriteFoods` as an Array, without specifying the type (i.e. `[String]`). In that case, `favoriteFoods` defaults to Mixed type, and you have to manually mark it as edited using `document.markModified('edited-field')`. See [Mongoose documentation](https://mongoosejs.com/docs/schematypes.html#Mixed)
 
-## 9.
+## 9. Perform New Updates on a Document Using model.findOneAndUpdate()
+
+Recent versions of mongoose have methods to simplify documents updating. Some more advanced features (i.e. pre/post hooks, validation) behave differently with this approach, so the Classic method is still useful in many situations. `findByIdAndUpdate()` can be used when searching by Id.
+
+Find a person by `Name` and set the person's age to 20. Use the function parameter `personName` as search key.
+
+Note: You should return the updated document. To do that you need to pass the options document `{ new: true }` as the 3rd argument to `findOneAndUpdate()`. By default these methods return the unmodified object.
+
+## 10.
