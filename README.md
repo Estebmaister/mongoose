@@ -2,7 +2,9 @@
 
 ===============================
 
-[![Workflow badge](https://github.com/estebmaister/mongoose/workflows/Glitch%20Sync/badge.svg)](https://github.com/estebmaister/mongoose/) [![Twitter Follow](https://img.shields.io/twitter/follow/estebmaister?label=Follow&style=social) ](https://twitter.com/estebmaister)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/estebmaister/mongoose?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/estebmaister/mongoose?style=plastic&logo=git&logoColor=white) [![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fmongoose-esteb.glitch.me&logo=glitch&style=plastic)](https://mongoose-esteb.glitch.me/) ![License](https://img.shields.io/github/license/estebmaister/mongoose?style=plastic) [![Twitter Follow](https://img.shields.io/twitter/follow/estebmaister?label=Follow&style=social) ](https://twitter.com/estebmaister)
+
+[![Workflow badge](https://github.com/estebmaister/mongoose/workflows/Glitch%20Sync/badge.svg)](https://github.com/Estebmaister/mongoose/blob/master/.github/workflows/main.yml)
 
 - A repository for the challenges in FCC.
 
