@@ -1,12 +1,54 @@
 # Node server, Mongo & Mongoose
 
-===============================
+====================================
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/estebmaister/mongoose?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/estebmaister/mongoose?style=plastic&logo=git&logoColor=white) [![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fmongoose-esteb.glitch.me&logo=glitch&style=plastic)](https://mongoose-esteb.glitch.me/) ![License](https://img.shields.io/github/license/estebmaister/mongoose?style=plastic) [![Twitter Follow](https://img.shields.io/twitter/follow/estebmaister?label=Follow&style=social) ](https://twitter.com/estebmaister)
 
-[![Workflow badge](https://github.com/estebmaister/mongoose/workflows/Glitch%20Sync/badge.svg)](https://github.com/Estebmaister/mongoose/blob/master/.github/workflows/main.yml)
+[![Workflow badge](https://github.com/estebmaister/mongoose/workflows/Glitch%20Sync/badge.svg)](https://github.com/Estebmaister/mongoose/blob/master/.github/workflows/main.yml) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
-- A repository for the challenges in FCC.
+- Created from the [FCC](https://freecodecamp.com) repository, to compile the lessons about MongoDB and Mongoose in NodeJS.
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F31OD9K)
+
+Start with an empty repository and making the git init as follows:
+
+```git
+git init
+git clone https://github.com/Estebmaister/mongoose.git
+```
+
+Adding the files from the original repo in FCC and start to coding.
+
+## Scripts
+
+To install all the dependencies :
+
+```npm
+npm install
+```
+
+To run the server
+
+```node
+node server.js
+```
+
+## Challenges
+
+### Table of Contents
+
+1. [Install and Set Up Mongoose](#1-install-and-set-up-mongoose)
+1. [Create a Model](#2-create-a-model)
+1. [Create and Save a Record of a Model](#3-create-and-save-a-record-of-a-model)
+1. [Create Many Records with model.create()](#4-create-many-records-with-modelcreate)
+1. [Use model.find() to Search Your Database](#5-use-modelfind-to-search-your-database)
+1. [Use model.findOne() to Return a Single Matching Document from Your Database](#6-use-modelfindone-to-return-a-single-matching-document-from-your-database)
+1. [Use model.findById() to Search Your Database By \_id](#7-use-modelfindbyid-to-search-your-database-by-_id)
+1. [Perform Classic Updates by Running Find, Edit, then Save](#8-perform-classic-updates-by-running-find-edit-then-save)
+1. [Perform New Updates on a Document Using model.findOneAndUpdate()](#9-perform-new-updates-on-a-document-using-modelfindoneandupdate)
+1. [Delete One Document Using model.findByIdAndRemove](#10-delete-one-document-using-modelfindbyidandremove)
+1. [](#11-)
+1. [](#12-)
 
 ## 1. Install and Set Up Mongoose
 
@@ -21,6 +63,8 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 });
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## 2. Create a Model
 
@@ -40,6 +84,8 @@ var someFunc = function (done) {
 };
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## 3. Create and Save a Record of a Model
 
 In this challenge you will have to create and save a record of a model.
@@ -55,11 +101,15 @@ person.save(function (err, data) {
 });
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## 4. Create Many Records with model.create()
 
 Sometimes you need to create many instances of your models, e.g. when seeding a database with initial data. `Model.create()` takes an array of objects like `[{name: 'John', ...}, {...}, ...]` as the first argument, and saves them all in the db.
 
 Create many people with `Model.create()`, using the function argument `arrayOfPeople`.
+
+**[⬆ back to top](#table-of-contents)**
 
 ## 5. Use model.find() to Search Your Database
 
@@ -67,17 +117,23 @@ Find all the people having a given name, using `Model.find() -> [Person]`
 
 In its simplest usage, `Model.find()` accepts a query document (a JSON object) as the first argument, then a callback. It returns an array of matches. It supports an extremely wide range of search options. Check it in the docs. Use the function argument `personName` as search key.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## 6. Use model.findOne() to Return a Single Matching Document from Your Database
 
 `Model.findOne()` behaves like `.find()`, but it returns only one document (not an array), even if there are multiple items. It is especially useful when searching by properties that you have declared as unique.
 
 Find just one person which has a certain food in the person's favorites, using `Model.findOne() -> Person`. Use the function argument food as search key.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## 7. Use model.findById() to Search Your Database By \_id
 
 When saving a document, mongodb automatically adds the field `_id`, and set it to a unique alphanumeric key. Searching by `_id` is an extremely frequent operation, so mongoose provides a dedicated method for it.
 
 Find the (only!!) person having a given `_id`, using `Model.findById() -> Person`. Use the function argument `personId` as the search key.
+
+**[⬆ back to top](#table-of-contents)**
 
 ## 8. Perform Classic Updates by Running Find, Edit, then Save
 
@@ -87,6 +143,8 @@ Find a person by `\_id` ( use any of the above methods ) with the parameter `per
 
 Note: This may be tricky, if in your Schema, you declared `favoriteFoods` as an Array, without specifying the type (i.e. `[String]`). In that case, `favoriteFoods` defaults to Mixed type, and you have to manually mark it as edited using `document.markModified('edited-field')`. See [Mongoose documentation](https://mongoosejs.com/docs/schematypes.html#Mixed)
 
+**[⬆ back to top](#table-of-contents)**
+
 ## 9. Perform New Updates on a Document Using model.findOneAndUpdate()
 
 Recent versions of mongoose have methods to simplify documents updating. Some more advanced features (i.e. pre/post hooks, validation) behave differently with this approach, so the Classic method is still useful in many situations. `findByIdAndUpdate()` can be used when searching by Id.
@@ -95,8 +153,18 @@ Find a person by `Name` and set the person's age to 20. Use the function paramet
 
 Note: You should return the updated document. To do that you need to pass the options document `{ new: true }` as the 3rd argument to `findOneAndUpdate()`. By default these methods return the unmodified object.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## 10. Delete One Document Using model.findByIdAndRemove
 
 Delete one person by the person's `_id`. You should use one of the methods `findByIdAndRemove()` or `findOneAndRemove()`. They are like the previous update methods. They pass the removed document to the db. As usual, use the function argument personId as the search key.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## 11.
+
+**[⬆ back to top](#table-of-contents)**
+
+## 12.
+
+**[⬆ back to top](#table-of-contents)**
