@@ -2,6 +2,8 @@
 
 ===============================
 
+[![Workflow badge](https://github.com/estebmaister/mongoose/workflows/Glitch%20Sync/badge.svg)](https://github.com/estebmaister/mongoose/) [![Twitter Follow](https://img.shields.io/twitter/follow/estebmaister?label=Follow&style=social) ](https://twitter.com/estebmaister)
+
 - A repository for the challenges in FCC.
 
 ## 1. Install and Set Up Mongoose
@@ -91,4 +93,8 @@ Find a person by `Name` and set the person's age to 20. Use the function paramet
 
 Note: You should return the updated document. To do that you need to pass the options document `{ new: true }` as the 3rd argument to `findOneAndUpdate()`. By default these methods return the unmodified object.
 
-## 10.
+## 10. Delete One Document Using model.findByIdAndRemove
+
+Delete one person by the person's `_id`. You should use one of the methods `findByIdAndRemove()` or `findOneAndRemove()`. They are like the previous update methods. They pass the removed document to the db. As usual, use the function argument personId as the search key.
+
+## 11.
