@@ -1,8 +1,8 @@
 # Node server, Mongo & Mongoose
 
-====================================
+========================================
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/estebmaister/mongoose?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/estebmaister/mongoose?style=plastic&logo=git&logoColor=white) [![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fmongoose-esteb.glitch.me&logo=glitch&style=plastic)](https://mongoose-esteb.glitch.me/) ![License](https://img.shields.io/github/license/estebmaister/mongoose?style=plastic) [![Twitter Follow](https://img.shields.io/twitter/follow/estebmaister?label=Follow&style=social) ](https://twitter.com/estebmaister)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/estebmaister/mongoose?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/estebmaister/mongoose?style=plastic&logo=git&logoColor=white) [![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fmongoose-esteb.glitch.me&logo=glitch&style=plastic)](https://mongoose-esteb.glitch.me/) [![License](https://img.shields.io/github/license/estebmaister/mongoose?style=plastic)](https://github.com/Estebmaister/mongoose/blob/master/LICENSE) [![Twitter Follow](https://img.shields.io/twitter/follow/estebmaister?label=Follow&style=social) ](https://twitter.com/estebmaister)
 
 [![Workflow badge](https://github.com/estebmaister/mongoose/workflows/Glitch%20Sync/badge.svg)](https://github.com/Estebmaister/mongoose/blob/master/.github/workflows/main.yml) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
@@ -47,8 +47,8 @@ node server.js
 1. [Perform Classic Updates by Running Find, Edit, then Save](#8-perform-classic-updates-by-running-find-edit-then-save)
 1. [Perform New Updates on a Document Using model.findOneAndUpdate()](#9-perform-new-updates-on-a-document-using-modelfindoneandupdate)
 1. [Delete One Document Using model.findByIdAndRemove](#10-delete-one-document-using-modelfindbyidandremove)
-1. [](#11-)
-1. [](#12-)
+1. [Delete Many Documents with model.remove()](#11-delete-many-documents-with-modelremove)
+1. [Chain Search Query Helpers to Narrow Search Results](#12-chain-search-query-helpers-to-narrow-search-results)
 
 ## 1. Install and Set Up Mongoose
 
@@ -161,10 +161,20 @@ Delete one person by the person's `_id`. You should use one of the methods `find
 
 **[⬆ back to top](#table-of-contents)**
 
-## 11.
+## 11. Delete Many Documents with model.remove()
+
+`Model.remove()` is useful to delete all the documents matching given criteria.
+
+Delete all the people whose name is “Mary”, using `Model.remove()`. Pass it to a query document with the `name` field set, and of course a callback.
+
+Note: The `Model.remove()` doesn’t return the deleted document, but a JSON object containing the outcome of the operation, and the number of items affected. Don’t forget to pass it to the `done()` callback, since we use it in tests.
 
 **[⬆ back to top](#table-of-contents)**
 
-## 12.
+## 12. Chain Search Query Helpers to Narrow Search Results
+
+If you don’t pass the callback as the last argument to `Model.find()` (or to the other search methods), the query is not executed. You can store the query in a variable for later use. This kind of object enables you to build up a query using chaining syntax. The actual db search is executed when you finally chain the method `.exec()`. You always need to pass your callback to this last method. There are many query helpers, here we’ll use the most ‘famous’ ones.
+
+Find people who like burrito. Sort them by name, limit the results to two documents, and hide their age. Chain `.find()`, `.sort()`, `.limit()`, `.select()`, and then `.exec()`. Pass the `done(err, data)` callback to `exec()`.
 
 **[⬆ back to top](#table-of-contents)**
