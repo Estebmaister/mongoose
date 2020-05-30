@@ -1,22 +1,32 @@
-/**********************************************
- * 3. FCC Mongo & Mongoose Challenges
- * ==================================
- ***********************************************/
+const express = require("express");
+const app = express();
 
-/** # MONGOOSE SETUP #
-/*  ================== */
+// Mounting the Logger middleware
+app.use("/", function (req, res, next) {
+  const { method, path, ip } = req;
+  console.log(`${method} ${path} - ${ip}`);
+  next();
+});
+console.log("Middleware logger active");
 
-/** 1) Install & Set up mongoose */
+// Mounting the body-parser middleware for post request
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+console.log("Body parser activated");
+
+// 3. FCC Mongo & Mongoose Challenges
+// # MONGOOSE SETUP #
+// 1) Install & Set up mongoose
 
 // Add mongodb and mongoose to the project's package.json. Then require
 // mongoose. Store your Mongo Atlas database URI in the private .env file
 // as MONGO_URI. Connect to the database using the following syntax:
-//
-// mongoose.connect(<Your URI>, { useNewUrlParser: true, useUnifiedTopology: true });
+
 require("dotenv").config();
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// mongoose.connect(<Your URI>, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -314,24 +324,22 @@ var removeManyPeople = function (done) {
 // Chain `.find()`, `.sort()`, `.limit()`, `.select()`, and then `.exec()`,
 // passing the `done(err, data)` callback to it.
 
-var queryChain = function (done) {
-  var foodToSearch = "burrito";
-
-  done(null /*, data*/);
+const queryChain = function (done) {
+  const foodToSearch = "burrito";
+  Person.find({ favoriteFoods: foodToSearch })
+    .sort({ name: 1 })
+    .limit(2)
+    .select({ age: 0 })
+    .exec((err, dataNext) => {
+      if (err) return console.error("error getting data: ", err.message);
+      done(null, dataNext);
+    });
 };
 
-/** **Well Done !!**
-/* You completed these challenges, let's go celebrate !
- */
-
-/** # Further Readings... #
-/*  ======================= */
-// If you are eager to learn and want to go deeper, You may look at :
-// * Indexes ( very important for query efficiency ),
-// * Pre/Post hooks,
-// * Validation,
-// * Schema Virtuals and  Model, Static, and Instance methods,
-// * and much more in the [mongoose docs](http://mongoosejs.com/docs/)
+app
+  .route("/name")
+  .get((req, res) => res.json({ name: `${req.query.first} ${req.query.last}` }))
+  .post((req, res) => res.json({ name: `${req.body.first} ${req.body.last}` }));
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 

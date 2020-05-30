@@ -2,9 +2,9 @@
 
 ========================================
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/estebmaister/mongoose?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/estebmaister/mongoose?style=plastic&logo=git&logoColor=white) [![Website](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fmongoose-esteb.glitch.me&logo=glitch&style=plastic)](https://mongoose-esteb.glitch.me/) [![License](https://img.shields.io/github/license/estebmaister/mongoose?style=plastic)](https://github.com/Estebmaister/mongoose/blob/master/LICENSE) [![Twitter Follow](https://img.shields.io/twitter/follow/estebmaister?label=Follow&style=social) ](https://twitter.com/estebmaister)
+![GitHub package.json version][gh-pack-json-v] ![Package.json express version][gh-pack-json-dep-v-express] ![Package.json mongodb version][gh-pack-json-dep-v-mongodb] ![Package.json mongoose version][gh-pack-json-dep-v-mongoose] <!-- ![GitHub language count][language-count-bdg] ![GitHub top language][top-language-bdg] ![GitHub repo size][repo-size-bdg] ![GitHub code size in bytes][code-size-bdg] --> ![Last commit][last-commit-bdg] [![Website][website-bdg]][website] [![MIT License][license-bdg]][license] [![Twitter Follow][twitter-bdg]][twitter]
 
-[![Workflow badge](https://github.com/estebmaister/mongoose/workflows/Glitch%20Sync/badge.svg)](https://github.com/Estebmaister/mongoose/blob/master/.github/workflows/main.yml) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
+[![Workflow badge][workflow-bdg]][glitch-workflow] [![PRs Welcome][prs-bdg]][prs-site]
 
 - Created from the [FCC](https://freecodecamp.com) repository, to compile the lessons about MongoDB and Mongoose in NodeJS.
 
@@ -177,4 +177,51 @@ If you don’t pass the callback as the last argument to `Model.find()` (or to t
 
 Find people who like burrito. Sort them by name, limit the results to two documents, and hide their age. Chain `.find()`, `.sort()`, `.limit()`, `.select()`, and then `.exec()`. Pass the `done(err, data)` callback to `exec()`.
 
+**Well Done !!**
+You completed these challenges, let's go celebrate !
+
 **[⬆ back to top](#table-of-contents)**
+
+# Further Readings
+
+If you are eager to learn and want to go deeper, You may look at :
+
+- Indexes ( very important for query efficiency ),
+- Pre/Post hooks,
+- Validation,
+- Schema Virtuals and Model, Static, and Instance methods,
+- and much more in the [mongoose docs](http://mongoosejs.com/docs/)
+
+# License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+<!-- General links -->
+
+[changelog]: ./CHANGELOG.md
+[version-bdg]: https://img.shields.io/badge/version-1.0.0-blue.svg?style=plastic
+[license]: ./LICENSE
+[twitter]: https://twitter.com/estebmaister
+[twitter-bdg]: https://img.shields.io/twitter/follow/estebmaister?label=Follow&style=social
+[prs-bdg]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat
+[prs-site]: (https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
+
+<!-- Repo badges links -->
+
+[license-bdg]: https://img.shields.io/github/license/estebmaister/mongoose?style=plastic
+[last-commit-bdg]: https://img.shields.io/github/last-commit/estebmaister/mongoose?style=plastic&logo=git&logoColor=white
+[language-count-bdg]: https://img.shields.io/github/languages/count/estebmaister/mongoose?style=plastic&logo=visual-studio-code
+[top-language-bdg]: https://img.shields.io/github/languages/top/estebmaister/mongoose?style=plastic&logo=freecodecamp
+[repo-size-bdg]: https://img.shields.io/github/repo-size/estebmaister/mongoose?style=plastic
+[code-size-bdg]: https://img.shields.io/github/languages/code-size/estebmaister/mongoose?style=plastic
+[gh-pack-json-v]: https://img.shields.io/github/package-json/v/estebmaister/boilerplate-express?color=blue&style=plastic&logo=github
+[gh-pack-json-dep-v-express]: https://img.shields.io/github/package-json/dependency-version/estebmaister/boilerplate-express/express?style=plastic&logo=express
+[gh-pack-json-dep-v-mongodb]: https://img.shields.io/github/package-json/dependency-version/estebmaister/mongoose/mongodb?style=plastic&logo=mongodb&logoColor=white
+[gh-pack-json-dep-v-mongoose]: https://img.shields.io/github/package-json/dependency-version/estebmaister/mongoose/mongoose?style=plastic&logo=mongoose
+
+<!-- Glitch web and workflow -->
+
+[website]: https://mongoose-esteb.glitch.me
+[website-bdg]: https://img.shields.io/website?down_color=violet&down_message=sleeping&label=servidor&logo=glitch&logoColor=white&style=plastic&up_color=green&up_message=online&url=https%3A%2F%2Fmongoose-esteb.glitch.me
+[workflow-bdg]: https://github.com/estebmaister/mongoose/workflows/Glitch%20Sync/badge.svg
+[glitch-workflow]: https://github.com/Estebmaister/mongoose/blob/master/.github/workflows/main.yml
