@@ -21,16 +21,22 @@ Adding the files from the original repo in FCC and start to coding.
 
 ## Scripts
 
-To install all the dependencies :
+To install all the dependencies:
 
 ```npm
 npm install
 ```
 
-To run the server
+To run the server static
 
 ```node
-node server.js
+npm start
+```
+
+To run the server with dynamic refresh
+
+```node
+npm run demon
 ```
 
 ## Challenges
