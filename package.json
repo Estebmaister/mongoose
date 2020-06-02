@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "demon": "nodemon server.js"
+    "demon": "nodemon server.js",
+    "preversion": "git pull",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -24,7 +26,9 @@
   "keywords": [
     "node",
     "hyperdev",
-    "express"
+    "express",
+    "mongoose",
+    "mongodb"
   ],
   "license": "MIT",
   "devDependencies": {
