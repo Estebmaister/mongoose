@@ -3,17 +3,17 @@
  * the verification process may break
  *******************************************/
 
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
 try {
-  var mongoose = require("mongoose");
+  const mongoose = require("mongoose");
 } catch (e) {
   console.log(e);
 }
-var fs = require("fs");
-var path = require("path");
-var bodyParser = require("body-parser");
-var router = express.Router();
+const fs = require("fs");
+const path = require("path");
+const bodyParser = require("body-parser");
+const router = express.Router();
 
 var enableCORS = function (req, res, next) {
   if (!process.env.DISABLE_XORIGIN) {

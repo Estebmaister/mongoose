@@ -14,13 +14,8 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 console.log("Body parser activated");
 
-// 3. FCC Mongo & Mongoose Challenges
 // # MONGOOSE SETUP #
 // 1) Install & Set up mongoose
-
-// Add mongodb and mongoose to the project's package.json. Then require
-// mongoose. Store your Mongo Atlas database URI in the private .env file
-// as MONGO_URI. Connect to the database using the following syntax:
 
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -31,14 +26,9 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
 const db = mongoose.connection;
-
 db.on("error", console.error.bind(console, "connection error:"));
-
-db.once("open", function () {
-  console.log("Connected to MongoDB");
-});
+db.once("open", () => console.log("Connected to MongoDB"));
 
 /** # SCHEMAS and MODELS #
 /*  ====================== */
@@ -118,14 +108,14 @@ const Person = mongoose.model("Person", personSchema);
 //    ...do your stuff here...
 // });
 
-const createAndSavePerson = function (done) {
+const createAndSavePerson = (done) => {
   let janeFonda = new Person({
     name: "Jane Fonda",
     age: 84,
     favoriteFoods: ["vodka", "air"],
   });
 
-  janeFonda.save(function (err, data) {
+  janeFonda.save((err, data) => {
     if (err) return console.error(err);
     done(null, data);
   });
