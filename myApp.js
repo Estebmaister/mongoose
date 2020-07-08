@@ -136,8 +136,8 @@ const arrayOfPeople = [
   { name: "Robert", age: 78, favoriteFoods: ["wine"] },
 ];
 
-const createManyPeople = function (arrayOfPeople, done) {
-  Person.create(arrayOfPeople, function (err, people) {
+const createManyPeople = (arrayOfPeople, done) => {
+  Person.create(arrayOfPeople, (err, people) => {
     if (err) return console.log(err);
     done(null, people);
   });
@@ -154,8 +154,8 @@ const createManyPeople = function (arrayOfPeople, done) {
 // It supports an extremely wide range of search options. Check it in the docs.
 // Use the function argument `personName` as search key.
 
-const findPeopleByName = function (personName, done) {
-  Person.find({ name: personName }, function (err, personFound) {
+const findPeopleByName = (personName, done) => {
+  Person.find({ name: personName }, (err, personFound) => {
     if (err) return console.log(err);
     done(null, personFound);
   });
@@ -170,8 +170,8 @@ const findPeopleByName = function (personName, done) {
 // using `Model.findOne() -> Person`. Use the function
 // argument `food` as search key
 
-const findOneByFood = function (food, done) {
-  Person.findOne({ favoriteFoods: food }, function (err, data) {
+const findOneByFood = (food, done) => {
+  Person.findOne({ favoriteFoods: food }, (err, data) => {
     if (err) return console.log(err);
     done(null, data);
   });
@@ -186,11 +186,10 @@ const findOneByFood = function (food, done) {
 // using `Model.findById() -> Person`.
 // Use the function argument 'personId' as search key.
 
-const findPersonById = function (personId, done) {
-  Person.findById(personId, function (err, data) {
-    if (err) return console.log(err);
-    done(null, data);
-  });
+const findPersonById = (personId, done) => {
+  Person.findById(personId, (err, data) =>
+    err ? console.log(err) : done(null, data)
+  );
 };
 
 /** # CR[U]D part III - UPDATE # 
@@ -218,18 +217,16 @@ const findPersonById = function (personId, done) {
 // manually mark it as edited using `document.markModified('edited-field')`
 // (http://mongoosejs.com/docs/schematypes.html - #Mixed )
 
-const findEditThenSave = function (personId, done) {
+const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
-  Person.findById(personId, function (err, data) {
+  Person.findById(personId, (err, data) => {
     if (err) return console.log(err);
-
     data.favoriteFoods.push(foodToAdd);
-    data.save((err, dataNext) => {
-      if (err) return console.error("error saving data: ", err.message);
-
-      done(null, dataNext);
-    });
+    data.save((err, dataNext) =>
+      err
+        ? console.error("error saving data: ", err.message)
+        : done(null, dataNext)
+    );
   });
 };
 
@@ -248,18 +245,14 @@ const findEditThenSave = function (personId, done) {
 // to `findOneAndUpdate()`. By default the method
 // passes the unmodified object to its callback.
 
-const findAndUpdate = function (personName, done) {
+const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
 
   Person.findOneAndUpdate(
     { name: personName },
     { $set: { age: ageToSet } },
     { new: true },
-
-    (err, data) => {
-      if (err) return done(err, data);
-      return done(null, data);
-    }
+    (err, data) => (err ? done(err, data) : done(null, data))
   );
 };
 
@@ -273,7 +266,7 @@ const findAndUpdate = function (personName, done) {
 // previous update methods. They pass the removed document to the cb.
 // As usual, use the function argument `personId` as search key.
 
-const removeById = function (personId, done) {
+const removeById = (personId, done) => {
   Person.findByIdAndRemove(personId, (err, data) =>
     err ? done(err, data) : done(null, data)
   );
@@ -289,8 +282,8 @@ const removeById = function (personId, done) {
 // containing the outcome of the operation, and the number of items affected.
 // Don't forget to pass it to the `done()` callback, since we use it in tests.
 
-var removeManyPeople = function (done) {
-  var nameToRemove = "Mary";
+const removeManyPeople = (done) => {
+  const nameToRemove = "Mary";
   Person.remove({ name: nameToRemove }, (err, data) =>
     err ? done(err, data) : done(null, data)
   );
@@ -314,16 +307,17 @@ var removeManyPeople = function (done) {
 // Chain `.find()`, `.sort()`, `.limit()`, `.select()`, and then `.exec()`,
 // passing the `done(err, data)` callback to it.
 
-const queryChain = function (done) {
+const queryChain = (done) => {
   const foodToSearch = "burrito";
   Person.find({ favoriteFoods: foodToSearch })
     .sort({ name: 1 })
     .limit(2)
     .select({ age: 0 })
-    .exec((err, dataNext) => {
-      if (err) return console.error("error getting data: ", err.message);
-      done(null, dataNext);
-    });
+    .exec((err, dataNext) =>
+      err
+        ? console.error("error getting data: ", err.message)
+        : done(null, dataNext)
+    );
 };
 
 app

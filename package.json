@@ -1,31 +1,31 @@
 {
-  "name": "fcc-mongo-mongoose-challenges",
-  "version": "0.0.1",
-  "description": "A boilerplate project",
+  "name": "node-mongo-mongoose",
+  "author": "http://github.com/estebmaister",
+  "version": "1.0.1",
+  "description": "An application to interact with a mongo database",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "demon": "nodemon server.js",
+    "start": "node server",
+    "demon": "nodemon server",
     "preversion": "git pull",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "express": "^4.12.4",
-    "mongodb": "^3.5.7",
-    "mongoose": "^5.9.13"
+    "express": "^4.17.1",
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.18"
   },
   "engines": {
-    "node": "4.4.5"
+    "node": "^14.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://hyperdev.com/#!/project/welcome-project"
+    "url": "http://github.com/estebmaister/mongoose"
   },
   "keywords": [
     "node",
-    "hyperdev",
     "express",
     "mongoose",
     "mongodb"
